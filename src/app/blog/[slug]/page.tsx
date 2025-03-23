@@ -157,26 +157,6 @@ const blogData = {
     }
 }
 
-const renderTableOfContents = (sections: any, prefix = "") => {
-    return (
-        <ol className="list-decimal pl-5 mt-2">
-            {sections.map((item: any, index: number) => {
-                const sectionNumber = prefix ? `${prefix}.${index + 1}` : `${index + 1}`;
-                return (
-                    <li key={item.id} className="mt-1">
-                        <a href={`#${item.id}`} className="hover:underline">
-                            {item.title}
-                        </a>
-                        {/* Kiểm tra nếu có các mục con */}
-                        {item.children && item.children.length > 0 && renderTableOfContents(item.children, sectionNumber)}
-                    </li>
-                );
-            })}
-        </ol>
-    );
-};
-
-
 
 const breadcrumbData = [
     { label: "Trang chủ", href: "/", isCurrent: false },
