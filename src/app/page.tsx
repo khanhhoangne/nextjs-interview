@@ -1,103 +1,37 @@
-import Image from "next/image";
+import PostCard from "@/components/ui/card";
+import CategoryList from "@/components/ui/categories";
+import ListCard from "@/components/ui/listCard";
+import SearchBox from "@/components/ui/search";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen text-gray-900">
+      {/* Main Content */}
+      <section>
+        <div className="my-15 flex justify-between">
+          <img width={195} height={188} src="https://s3-alpha-sig.figma.com/img/e0d8/1ba5/cdfffb36b1833b8a6828c5ce85910382?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Tl4jx8eLct6F9P4EH-ODXRcnDwcsWyTQnVfKBGHo8ZJlb12zEEyzDNXnYUeXjq98JTVrFSKFV-1EnHGcvrOn5JYm7~A4qpItm8cL8eEEoIf7TtOKlaNNK8lkHH-xqOS8yyzQNpvHhpf0YKtpENl3SgXUXeo~zsooTwz42EdZWQjt6zYkGZnTcYUKejTFjsqFX~l0KGlTD0jonPvguGf7zMOJcy3-bTlm8XBYjR2qz3OchRFanT~0x5hOIm8XPwIuE19EfQAFblC9fr2A-ZBzyybhvn3JC1MwX4Nv8itxlZQvIMIps1EEwJPlZFU2qWCXYZhEAT~5Kff-Ysi7EQdPDw__" alt="" />
+          <img src="/BlogFOSO.png" width={600} height={160} alt="Blog Image" className="rounded-md" />
+          <img width={195} src="https://s3-alpha-sig.figma.com/img/b71b/64bf/30cd70aca236d986b8828bb5ad1ed8a5?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OqBF3cY4YCKaT2dd~wBA~5kqYKayt8ueCwXwgWH2sQnvvRbyEhG2lMRhAxOp4xiE5pjki8yWPb92NswfZ~xevKDe5jh1K6IiefqCVNcEpMsoj92b6XJwW4mHW9bN3bzERZNvqjSy3u8Ie4s2qqTEsdVXo6mM7rcXZXZCbyW-vmLuqyN-eE1FfUE9ya6ufmFLwCjEtKOfJBashVZcQGUmdCBVkH436-Vx88rXesNe81YynXXr4pOgJLoTiRyh7by68psebRVeOp9yFxSUFZDPcsbuiVfT3XpR-~Erl45OGPuUTF7BaaOMGcxAVwveBNSrSHMrTAUoHRe7Q0Hgzxuobw__" alt="" />
         </div>
+        <span className="text-center block">Cùng FOSO khám phá kiến thức, xu hướng công nghệ và sản xuất ngay!</span>
+      </section>
+      <main className="container mx-auto py-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+
+        <section className="col-span-9 space-y-4">
+          <article className="p-4 rounded-md">
+
+            <h1 className="text-3xl font-extrabold mt-2">Tất cả bài viết</h1>
+            <img src="/banner_left.png" width="100%" alt="Blog Image" className="rounded-md my-10" />
+            <ListCard />
+          </article>
+        </section>
+
+        <aside className="col-span-3 p-4 rounded-md">
+          <h1 className="text-xl font-extrabold">Tìm kiếm</h1>
+          <SearchBox />
+          <CategoryList />
+        </aside>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
