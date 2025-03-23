@@ -2,17 +2,22 @@
 
 import React, { useState } from "react";
 
+interface Section {
+    id: string;
+    title: string;
+    children?: Section[];
+}
+
 const renderTableOfContents = (
-    sections: any,
+    sections: Section[],
     selectedId: string | null,
     setSelectedId: (id: string) => void,
     prefix = "",
-    isChild = false // Thêm cờ để xác định có phải mục con hay không
+    isChild = false
 ) => {
     return (
-        <ol className=" pl-5 mt-2">
-            {sections.map((item: any, index: number) => {
-                // Nếu là mục con thì mới thêm prefix, nếu không thì chỉ hiển thị số thứ tự gốc
+        <ol className="pl-5 mt-2">
+            {sections.map((item, index) => {
                 const sectionNumber = isChild ? `${prefix}${index + 1}.` : `${index + 1}.`;
                 const isSelected = selectedId === item.id;
 
@@ -21,15 +26,11 @@ const renderTableOfContents = (
                         <a
                             href={`#${item.id}`}
                             onClick={() => setSelectedId(item.id)}
-                            className={`hover:underline ${
-                                isSelected ? "text-[#15AA7A] font-semibold" : ""
-                            }`}
+                            className={`hover:underline ${isSelected ? "text-[#15AA7A] font-semibold" : ""}`}
                         >
                             {sectionNumber} {item.title}
                         </a>
-                        {/* Kiểm tra nếu có các mục con */}
-                        {item.children &&
-                            item.children.length > 0 &&
+                        {item.children && item.children.length > 0 &&
                             renderTableOfContents(item.children, selectedId, setSelectedId, sectionNumber, true)}
                     </li>
                 );
@@ -38,7 +39,7 @@ const renderTableOfContents = (
     );
 };
 
-function Menu({ data }: any) {
+function Menu({ data }: { data: Section[] }) {
     const [selectedId, setSelectedId] = useState<string | null>(null);
 
     return (

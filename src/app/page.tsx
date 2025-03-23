@@ -1,4 +1,3 @@
-import PostCard from "@/components/ui/card";
 import CategoryList from "@/components/ui/categories";
 import ListCard from "@/components/ui/listCard";
 import SearchBox from "@/components/ui/search";
